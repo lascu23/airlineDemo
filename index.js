@@ -12,7 +12,7 @@ const port = 3000;
 app.set("view engine", "ejs"); // Adăugăm configurarea pentru EJS
 
 app.use(session({
-    secret: '.....', // Cheia secretă utilizată pentru a semna cookie-urile de sesiune
+    secret: 'secret-key', // Cheia secretă utilizată pentru a semna cookie-urile de sesiune
     resave: false,
     saveUninitialized: true,
   }));
@@ -25,8 +25,8 @@ app.use(express.static("public"));
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "....",
-    database:".....",
+    password: "!Nustiu123!",
+    database:"airline_db",
     multipleStatements: true
   });
 
@@ -35,11 +35,15 @@ var con = mysql.createConnection({
     console.log("Connected!");
   });
 
+app.get("/home", (req, res) => {
+    res.sendFile(path.join(__dirname,  'index.html'))
+})
+
 app.get("/", (req, res)=>{
     if(req.session.authenticated){
-        res.render("home.ejs", {loggedIn: true})
+        res.render("index.ejs", {loggedIn: true})
     }else{
-        res.render("home.ejs", { loggedIn: false });
+        res.render("index.ejs", { loggedIn: false });
     }
 })
 
