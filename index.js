@@ -35,10 +35,6 @@ var con = mysql.createConnection({
     console.log("Connected!");
   });
 
-app.get("/home", (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'))
-})
-
 app.get("/", (req, res)=>{
     if(req.session.authenticated){
         res.render("home.ejs", {loggedIn: true})
