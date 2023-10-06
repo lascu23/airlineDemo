@@ -35,8 +35,11 @@ var con = mysql.createConnection({
     console.log("Connected!");
   });
 
+app.get("/home", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'index.html'))
+})
+
 app.get("/", (req, res)=>{
-    // res.sendFile(path.join(__dirname, 'public','html', 'home.html'))
     if(req.session.authenticated){
         res.render("home.ejs", {loggedIn: true})
     }else{
@@ -56,7 +59,6 @@ app.post("/selectFlight", (req, res)=>{
                 console.error("Error querying MySQL:", err);
                 return;
             }
-            // console.log("Data extracted:", result);
             res.render("selectFlight.ejs", {flights:result})
         });
     }else if(placeDepart === "" || placeArrival=== ""){
@@ -66,7 +68,6 @@ app.post("/selectFlight", (req, res)=>{
                 console.error("Error querying MySQL:", err);
                 return;
             }
-            //  console.log("Data extracted:", result);
             res.render("selectFlight.ejs", {flights:result})
         });
     }else{
@@ -76,7 +77,6 @@ app.post("/selectFlight", (req, res)=>{
                 console.error("Error querying MySQL:", err);
                 return;
             }
-            //  console.log("Data extracted:", result);
             res.render("selectFlight.ejs", {flights:result})
         });
     }
@@ -89,7 +89,6 @@ app.get("/flights", (req, res)=>{
             console.error("Error querying MySQL:", err);
             return;
         }
-        // console.log("Data extracted:", result);
         res.render("flights.ejs", {flights:result})
     });
 })
@@ -141,8 +140,6 @@ app.post("/login", (req, res) => {
             if (bcryptErr || !bcryptResult) {
                 return res.status(401).send('Parolă incorectă.');
             }
-            // Autentificare reușită; puteți seta o sesiune sau face alte acțiuni de autentificare aici
-            // res.send(`Autentificare reușită pentru ${user.nume}`);
             req.session.authenticated = true;
             res.redirect("/")
         });
@@ -150,13 +147,10 @@ app.post("/login", (req, res) => {
 })
 
 app.get("/logout", (req, res) => {
-    // Distrugeți sesiunea utilizatorului pentru a-l deautentifica
-    req.session.destroy((err) => {
+    req.session.destroy((err) => { //destroy() - elimina si variabila "authenticated"
         if (err) {
             console.error('Eroare la deautentificare:', err);
         } else {
-            // Redirecționați utilizatorul către pagina de autentificare sau altă pagină după deautentificare
-            // req.session.authenticated = false;
             res.redirect("/");
         }
     });
