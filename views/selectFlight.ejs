@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de angajati</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="../css/flights.css">
+
+
+<body style="background-color: #005286;">
+
+<div style="display: flex; align-items: center; height: 100%; width: 100%;">
+    <img src="../images/airline.png" alt="Imagename" style="margin-right: 10px; width: 30px;">
+    <a style="text-decoration: none;" href="/">
+        <h1 style="color: white; margin: 0;">MikeLine</h1>
+    </a>
+</div>
+
+<h1 style="color: white;">Zboruri disponibile</h1>
+
+<!-- <div class="container-zboruri">
+    <div style="height: 100%; width:50%;" class="outer-div">
+        <a th:each="oneFlight: ${flight}" th:href="/" class="flight inner-div" style="width: 100%; height: 100%; text-decoration: none;">
+            <p><span th:text="${oneFlight.takeOffLocation}"></span></p>
+            <p><span th:text="${oneFlight.destination}"></span></p>
+            <p><span th:text="${oneFlight.dateDepart}"></span></p>
+            <p><span th:text="${oneFlight.dateArrival}"></span></p>
+            <p><span th:text="${oneFlight.price}"></span>$</p>
+            <p style="margin-top: 10px; font-style: italic; color: #888;"><span th:text="${oneFlight.stopover}"></span></p>
+        </a>
+    </div>
+</div> -->
+
+<% if (locals.flights){%>
+
+    <div class="container-zboruri">
+    <div style="height: 100%; width:50%;" class="outer-div">
+        <% flights.forEach(function(flight) { %>
+            <div class="flight inner-div" style="width: 100%; height: 100%;">
+              <i><b><span><%= flight.takeoff_location %></span></b></i>
+              <i class="fa fa-long-arrow-right"></i>
+              <i><b><span><%= flight.destination %></span></b></i>
+              <p><span><%= flight.date_depart.toLocaleDateString() %></span></p>
+              <p><span><%= flight.date_arrival.toLocaleDateString() %></span></p>
+              <p><span><%= flight.price %></span>$</p>
+              <% if (flight.stopover !== null){%>
+              <p>Stopover: <span><%= flight.stopover %></span></p>
+              <%}else{%>
+                <p>No stopover</p>
+                <% } %>
+            </div>
+          <% }); %>
+    </div>
+    </div>
+    <%}%>
+
+</body>
+</html>

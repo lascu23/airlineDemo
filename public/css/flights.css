@@ -1,0 +1,98 @@
+/* Stilurile generale pentru biletul de avion */
+.flight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  /* Stilurile pentru informațiile despre zbor */
+  .flight p {
+    margin: 0 5px;
+  }
+  
+  /* Stilurile pentru săgeată */
+  .flight i.fa-long-arrow-right {
+    font-size: 25px;
+    margin: 0 10px;
+    color: #888;
+  }
+  
+  /* Stilurile pentru destinație și locația de decolare */
+  .flight p:nth-child(1),
+  .flight p:nth-child(3) {
+    font-weight: bold;
+  }
+  
+  /* Stilurile pentru preț */
+  .flight p:nth-child(6) {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* Stilurile pentru escală */
+  .flight p:nth-child(7) {
+    margin-top: 10px;
+    font-style: italic;
+    color: #888;
+  }
+  
+  .container-zboruri {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+  body {
+    background-color: #005286;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid white;
+}
+
+th {
+    background-color: #003152;
+}
+
+td {
+    background-color: #005286;
+}
+  
+  
+  
+  
