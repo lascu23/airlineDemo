@@ -12,7 +12,7 @@ const port = 3000;
 app.set("view engine", "ejs"); // Adăugăm configurarea pentru EJS
 
 app.use(session({
-    secret: 'secret-key', // Cheia secretă utilizată pentru a semna cookie-urile de sesiune
+    secret: '.....', // Cheia secretă utilizată pentru a semna cookie-urile de sesiune
     resave: false,
     saveUninitialized: true,
   }));
@@ -25,8 +25,8 @@ app.use(express.static("public"));
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "!Nustiu123!",
-    database:"airline_db",
+    password: "....",
+    database:".....",
     multipleStatements: true
   });
 
